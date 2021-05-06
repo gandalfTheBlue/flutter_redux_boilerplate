@@ -10,7 +10,7 @@ class GithubWebClient {
 
   Future<GithubRepoResult> fetchRepoResult(String query) async {
     final response =
-        await http.get('$baseURL/search/repositories?q=$query&sort=stars');
+        await http.get(Uri.parse('$baseURL/search/repositories?q=$query&sort=stars'));
 
     var githubRepoResultJson = json.decode(response.body);
 
@@ -22,7 +22,7 @@ class GithubWebClient {
   }
 
   Future<OwnerDetailsResult> fetchOwnerDetails(String owner) async {
-    final response = await http.get('$baseURL/users/$owner');
+    final response = await http.get(Uri.parse('$baseURL/users/$owner'));
 
     var ownerDetailsJson = json.decode(response.body);
 
